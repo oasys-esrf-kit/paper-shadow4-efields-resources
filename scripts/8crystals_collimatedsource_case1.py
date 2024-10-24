@@ -286,3 +286,24 @@ print("Intensity after xtal8: ", BEAMS[8].get_column(24)[0], BEAMS[8].get_column
 
 print('\n')
 
+#
+# what should be after Xiaojiang
+#
+# r_s = 0.94052433 # 0.94166032
+# r_p = 4.05623739e-06 # 2.08156194e-06
+
+R_S = [r_s , r_s, r_s, r_s, r_p, r_p, r_p, r_p]
+R_P = [r_p , r_p, r_p, r_p, r_s, r_s, r_s, r_s]
+
+
+N = BEAMS[0].N
+I_s = N/2  #* 1/2**2 * (r_s)**4
+I_p = N/2  #* 1/2**2 * (r_p)**4
+
+
+for i in range(len(R_S)):
+    I_s *= R_S[i]
+    I_p *= R_P[i]
+    print("Xiaojiang s,p,tot (after %d crystals: ) " % (1+i), I_s, I_p, I_s+I_p )
+
+
